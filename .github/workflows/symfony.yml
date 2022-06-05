@@ -34,16 +34,11 @@ jobs:
       run: composer update
     - name: Execute Unit tests via PHPUnit
       run: vendor/bin/phpunit
-    - name: Notify if failure
-    - id: test-results
-      if: ${{ success() }}
-      with:
-        files: "test-results/**/*.xml"
-    - name: Notify if success
+    - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1
       id: test-results
-      if: ${{ success() }}
+      if: always()
       with:
         files: "test-results/**/*.xml"
-    - name: conclusion
-      run: echo "Conclusion is ${{ fromJSON({"text":"✅ {your-job-name-here} passed."}).conclusion }}"
+    - name: Conclusion
+      run: echo "Conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"
