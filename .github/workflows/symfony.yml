@@ -35,10 +35,13 @@ jobs:
     - name: Execute Unit tests via PHPUnit
       run: vendor/bin/phpunit
 
-    - name: Notify if failure
-      if: ${{ failure() }}
-      run: echo "Tests failed"
-
-    - name: Notify if success
-      if: ${{ success() }}
-      run: echo "Tests passed"
+  symfony-verify:
+    runs-on: ubuntu-latest
+    needs: symfony-tests
+    steps:
+      - name: Notify if failure
+        if: ${{ failure() }}
+        run: echo "Tests failed"
+      - name: Notify if success
+        if: ${{ success() }}
+        run: echo "Tests passed"
