@@ -32,15 +32,9 @@ jobs:
             ${{ runner.os }}-php-
       - name: Install Dependencies
         run: composer update
-      - name: Checkout to tests branch
-        run: git checkout tests
-      - name: Merge develop
-        run: git merge develop
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
-      - name: git push tests
-        run: git push
       - name: git checkout main
         run: git checkout main
       - name: merge tests
-        run: git merge tests
+        run: git merge develop
