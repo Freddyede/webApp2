@@ -34,15 +34,3 @@ jobs:
       run: composer update
     - name: Execute Unit tests via PHPUnit
       run: vendor/bin/phpunit
-    - name: Install git
-      run: sudo apt-get install git
-    - name: init git
-      run: git init
-    - name: fetch repo
-      run: git fetch
-    - name: push datas
-      run: sudo git add . && sudo git push
-    - name: checkout main
-      run: git checkout main
-    - name: merge tests
-      run: git merge tests
