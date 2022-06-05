@@ -66,6 +66,6 @@ jobs:
         with:
           changes: public
           repository: https://github.com/Freddyede/server_repo.git
-          ssh_key: ${{ GitKraken LAPTOP-N36CBEF5 }}
+          ssh_key: ${{ secrets.REPO_DEPLOY_KEY }}
           name: Freddyede
           clean_repo: true
