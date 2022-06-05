@@ -41,11 +41,7 @@ jobs:
     - name: fetch repo
       run: git fetch
     - name: push datas
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
-      run: git push
+      run: sudo git add . && sudo git push
     - name: checkout main
       run: git checkout main
     - name: merge tests
