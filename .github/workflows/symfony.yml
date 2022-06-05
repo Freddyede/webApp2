@@ -34,3 +34,7 @@ jobs:
         run: composer update
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
+      - name: Checkout to main branch
+        run: git checkout main
+      - name: Merge develop
+        run: git merge develop
