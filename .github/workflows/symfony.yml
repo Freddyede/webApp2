@@ -61,12 +61,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: symfony-func_tests
     steps:
-      - name: install ssh
-        run: sudo apt install ssh
-      - name: deploy changes to a repo
-        uses: tagus/git-deploy@v0.4.1
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          changes: public
-          repository: https://github.com/Freddyede/server_repo.git
-          name: Freddyede
-          clean_repo: true
+          source-directory: 'output'
+          destination-github-username: 'Freddyede'
+          destination-repository-name: 'server_repo'
+          user-email: patouillardfranck3@gmail.com
+          target-branch: main
