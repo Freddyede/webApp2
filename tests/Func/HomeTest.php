@@ -11,7 +11,6 @@ class HomeTest extends WebTestCase
 
         $client = static::createClient();
 
-        // Request a specific page
         $client->request('GET', '/');
 
         // Validate a successful response and some content
