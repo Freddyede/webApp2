@@ -34,11 +34,17 @@ jobs:
       run: composer update
     - name: Execute Unit tests via PHPUnit
       run: vendor/bin/phpunit
-    - name: Notify if failure
+    - name: notify of failure
       if: ${{ failure() }}
-      run: | 
-        curl -X POST -H 'Content-type: application/json' --data '{"text":"❌ {your-job-name-here} failed."}' ${{ secrets.SLACK_WEBHOOK_URL }}
-    - name: Notify if success
+      uses: tokorom/action-slack-incoming-webhook@main
+      env:
+        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      with:
+        text: XXX Build failed - Deploy - Server - TEST - Azure Web Apps CI/CD. XXX
+    - name: notify of success
       if: ${{ success() }}
-      run: |
-        /usr/bin/git checkout main && /usr/bin/git merge tests
+      uses: tokorom/action-slack-incoming-webhook@main
+      env:
+        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      with:
+        text: ":heavy_check_mark: Build success - Deploy -  Server - TEST - Azure Web pps CI/CD. :heavy_check_mark:"
