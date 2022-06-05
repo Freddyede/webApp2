@@ -41,6 +41,9 @@ jobs:
     - name: fetch repo
       run: git fetch
     - name: push datas
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
       run: git push
     - name: checkout main
       run: git checkout main
