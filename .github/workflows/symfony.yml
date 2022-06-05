@@ -2,7 +2,7 @@ name: Symfony
 
 on:
   push:
-    branches: [ "tests" ]
+    branches: [ "tests", "develop" ]
   pull_request:
     branches: [ "tests" ]
 
