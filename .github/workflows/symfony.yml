@@ -35,8 +35,15 @@ jobs:
     - name: Execute Unit tests via PHPUnit
       run: vendor/bin/phpunit
     - name: Notify if failure
-      if: ${{ failure() }}
-      run: echo "Conclusion is ${{ fromJSON({"text":"❌ {your-job-name-here} failed."}).conclusion }}"
-    - name: Notify if success
+    - id: test-results
       if: ${{ success() }}
+      with:
+        files: "test-results/**/*.xml"
+    - name: Notify if success
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      id: test-results
+      if: ${{ success() }}
+      with:
+        files: "test-results/**/*.xml"
+    - name: conclusion
       run: echo "Conclusion is ${{ fromJSON({"text":"✅ {your-job-name-here} passed."}).conclusion }}"
