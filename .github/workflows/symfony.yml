@@ -65,7 +65,7 @@ jobs:
         uses: tagus/git-deploy@v0.4.1
         with:
           changes: public
-          repository: https://github.com/Freddyede/server_repo.git
+          repository: git@github.com:Freddyede/https://github.com/Freddyede/server_repo.git
           ssh_key: ${{ secrets.REPO_DEPLOY_KEY }}
           name: Freddyede
           clean_repo: true
