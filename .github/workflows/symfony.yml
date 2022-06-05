@@ -39,4 +39,4 @@ jobs:
       run: echo "Tests failed"
     - name: Notify if success
       if: ${{ success() }}
-      run: echo "Tests passed
+      run: echo "Tests passed"
