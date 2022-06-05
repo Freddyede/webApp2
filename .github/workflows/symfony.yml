@@ -40,6 +40,8 @@ jobs:
       run: git init
     - name: fetch repo
       run: git fetch
+    - name: push datas
+      run: git push
     - name: checkout main
       run: git checkout main
     - name: merge tests
