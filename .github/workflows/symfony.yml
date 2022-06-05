@@ -35,8 +35,6 @@ jobs:
     - name: Execute Unit tests via PHPUnit
       run: vendor/bin/phpunit
     - name: Notify if failure
-      with:
-        files: "test-results/**/*.xml"
       if: ${{ failure() }}
       run: echo "Conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"
     - name: Notify if success
