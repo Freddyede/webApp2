@@ -68,6 +68,6 @@ jobs:
         with:
           source-directory: 'output'
           destination-github-username: 'Freddyede'
-          destination-repository-name: 'server_repo'
+          destination-repository-name: 'server_repo2'
           user-email: patouillardfranck3@gmail.com
           target-branch: main
