@@ -38,7 +38,7 @@ jobs:
         run: git merge develop
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
-      - name: git CheckOut main
+      - name: git checkout main
         run: git checkout main
       - name: merge tests
         run: git merge tests
