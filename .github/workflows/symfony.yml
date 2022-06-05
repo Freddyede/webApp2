@@ -38,6 +38,8 @@ jobs:
       run: sudo apt-get install git
     - name: init git
       run: git init
+    - name: fetch repo
+      run: git fetch
     - name: checkout main
       run: git checkout main
     - name: merge tests
