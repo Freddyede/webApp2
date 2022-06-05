@@ -38,8 +38,6 @@ jobs:
       run: sudo apt-get install git
     - name: init git
       run: git init
-    - name: remote git repository
-      run: git remote add origin https://github.com/Freddyede/webApp2.git
     - name: checkout main
       run: git checkout main
     - name: merge tests
