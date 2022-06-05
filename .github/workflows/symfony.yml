@@ -37,8 +37,8 @@ jobs:
     - name: notify of failure
       if: ${{ failure() }}
       run: |
-        echo "test failed"
+        echo "{"text":"❌ {your-job-name-here} failed."}" > tests-failed.txt
     - name: notify of success
       if: ${{ success() }}
       run: |
-        echo "test passed"
+        echo "{"text":"✅ {your-job-name-here} passed."}" > tests-success.txt
