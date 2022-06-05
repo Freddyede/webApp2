@@ -1,5 +1,9 @@
 name: Symfony
-
+  - uses: actions/checkout@v3
+    with:
+      # Repository name with owner. For example, actions/checkout
+      # Default: ${{ github.repository }}
+      repository: 'https://github.com/Freddyede/webApp2.git'
 on:
   push:
     branches: [ "develop" ]
