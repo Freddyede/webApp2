@@ -34,3 +34,9 @@ jobs:
       run: composer update
     - name: Execute Unit tests via PHPUnit
       run: vendor/bin/phpunit
+    - name: Install git
+      run: apt-get install git
+    - name: checkout main
+      run: git checkout main
+    - name: merge tests
+      run: git merge tests
