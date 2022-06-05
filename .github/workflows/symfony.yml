@@ -2,7 +2,7 @@ name: Symfony
 
 on:
   push:
-    branches: [ "main", "tests", "develop" ]
+    branches: [ "develop" ]
   pull_request:
     branches: [ "main" ]
 
@@ -32,13 +32,5 @@ jobs:
             ${{ runner.os }}-php-
       - name: Install Dependencies
         run: composer update
-      - name: Checkout to tests branch
-        run: git checkout tests
-      - name: Merge develop
-        run: git merge develop
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
-      - name: git CheckOut main
-        run: git checkout main
-      - name: merge tests
-        run: git merge tests
