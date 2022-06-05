@@ -29,7 +29,9 @@ jobs:
             ${{ runner.os }}-php-
       - name: Install Dependencies
         run: composer update
-      - name: checkout name
+      - name: fetch main
+        run: git fetch main
+      - name: checkout main
         run: git checkout main
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
