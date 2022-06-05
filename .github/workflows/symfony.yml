@@ -36,7 +36,7 @@ jobs:
       run: vendor/bin/phpunit
     - name: Notify if failure
       if: ${{ failure() }}
-      run: echo "Conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"
+      run: echo "Conclusion is ${{ fromJSON({"text":"❌ {your-job-name-here} failed."}).conclusion }}"
     - name: Notify if success
       if: ${{ success() }}
-      run: echo "Conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"
+      run: echo "Conclusion is ${{ fromJSON({"text":"✅ {your-job-name-here} passed."}).conclusion }}"
