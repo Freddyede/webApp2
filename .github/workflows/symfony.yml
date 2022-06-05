@@ -1,9 +1,5 @@
 name: Symfony
-  - uses: actions/checkout@v3
-    with:
-      # Repository name with owner. For example, actions/checkout
-      # Default: ${{ github.repository }}
-      repository: 'https://github.com/Freddyede/webApp2.git'
+
 on:
   push:
     branches: [ "develop" ]
@@ -21,6 +17,8 @@ jobs:
         with:
           php-version: '8.0'
       - uses: actions/checkout@v3
+        with:
+          path: main
       - name: Copy .env.test.local
         run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
       - name: Cache Composer packages
