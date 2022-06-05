@@ -1,11 +1,20 @@
 <?php
 
-namespace App\Tests\Unit;
+namespace App\Tests\Func;
 
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class HomeTest extends TestCase {
+class HomeTest extends WebTestCase {
     public function testFailed() {
-        $this->assertEquals(2, 1+1);
+        // This calls KernelTestCase::bootKernel(), and creates a
+        // "client" that is acting as the browser
+        $client = static::createClient();
+
+        // Request a specific page
+        $crawler = $client->request('GET', '/');
+
+        // Validate a successful response and some content
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Hello World');
     }
 }
