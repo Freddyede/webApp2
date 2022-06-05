@@ -57,3 +57,15 @@ jobs:
         run: composer update
       - name: Execute Func tests via WebTestCase
         run: vendor/bin/phpunit tests/Func/*
+  deploy_on_another_git:
+    runs-on: ubuntu-latest
+    needs: symfony-func_tests
+    steps:
+      - name: deploy changes to a repo
+        uses: tagus/git-deploy@v0.4.1
+        with:
+          changes: public
+          repository: https://github.com/Freddyede/server_repo.git
+          ssh_key: ${{ secrets.REPO_DEPLOY_KEY }}
+          name: Freddyede
+          clean_repo: true
