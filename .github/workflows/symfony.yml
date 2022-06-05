@@ -36,9 +36,13 @@ jobs:
       run: vendor/bin/phpunit
     - name: Notify if failure
       uses: EnricoMi/publish-unit-test-result-action@v1
+      with:
+        files: "test-results/**/*.xml"
       if: ${{ failure() }}
       run: echo "Conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"
     - name: Notify if success
       uses: EnricoMi/publish-unit-test-result-action@v1
+      with:
+        files: "test-results/**/*.xml"
       if: ${{ success() }}
       run: echo "Conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"
